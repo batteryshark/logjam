@@ -1,0 +1,116 @@
+{
+    "version": "2.0.0",
+    "tasks": [    
+        {
+            "label": "Compile Client Library [Win/64-bit]",
+            "type": "shell",
+            "command": [
+                "x86_64-w64-mingw32-gcc",
+                "-shared",
+                "-DTARGET_OS_WINDOWS",
+                "${workspaceFolder}/../afunix/src/*.c",                             
+                "${workspaceFolder}/src/*.c",             
+                "-static", 
+                "-static-libgcc",
+                "-lgcc",
+                "-lws2_32",
+                "-o ${workspaceFolder}/bin/logjam64.dll"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Compile Client Library [Win/32-bit]",
+            "type": "shell",
+            "command": [
+                "i686-w64-mingw32-gcc",
+                "-m32",
+                "-DTARGET_OS_WINDOWS",
+                "-shared",
+                "${workspaceFolder}/../afunix/src/*.c",                             
+                "${workspaceFolder}/src/*.c",               
+                "-static", 
+                "-static-libgcc",
+                "-lgcc",
+                "-lws2_32",                
+                "-o ${workspaceFolder}/bin/logjam32.dll"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },        
+        {
+            "label": "Compile Client Library [Linux/64-bit]",
+            "type": "shell",
+            "command": [
+                "/usr/bin/gcc",
+                "-shared",
+                "${workspaceFolder}/../afunix/src/*.c",                             
+                "${workspaceFolder}/src/*.c",                        
+                "-static-libgcc",
+                "-lgcc",
+                "-o ${workspaceFolder}/bin/logjam64.so"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Compile Client Library [Linux/32-bit]",
+            "type": "shell",
+            "command": [
+                "/usr/bin/gcc",
+                "-m32",
+                "-shared",
+                "${workspaceFolder}/../afunix/src/*.c",                             
+                "${workspaceFolder}/src/*.c",               
+                "-static-libgcc",
+                "-lgcc",
+                "-o ${workspaceFolder}/bin/logjam32.so"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },        
+        {
+            "label": "Compile Client Library [Mac/64-bit]",
+            "type": "shell",
+            "command": [
+                "/usr/bin/gcc",
+                "-shared",
+                "${workspaceFolder}/../afunix/src/*.c",                             
+                "${workspaceFolder}/src/*.c",               
+                "-o ${workspaceFolder}/bin/logjam64.dylib"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }                       
+    ]
+  }
